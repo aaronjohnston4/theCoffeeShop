@@ -50,8 +50,14 @@ class ProductList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["products"] = Products.objects.all() # this is where we add the key into our context object for the view to use
+        name = self.request.GET.get("name")
+        if name != None:
+            context["products"] = Products.objects.filter(name__icontains=name)
+            # We add a header context that includes the search param
+            context["header"] = f"Searching for {name}"
+        else:
+            context["products"] = Products.objects.all()
+            # default header for not searching 
+            context["header"] = f"Searching for {name}"
         return context
-
-
 
