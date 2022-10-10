@@ -20,5 +20,5 @@ I will create this site using python and django.
 
 Step 2. ERD
 
-<img width="400" alt="Edit Page" src="https://i.imgur.com/2oOthbm.png">
+<img width="400" alt="Edit Page" src="https://i.imgur.com/tWBPfyC.png">
  

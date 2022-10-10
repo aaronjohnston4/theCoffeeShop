@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% comment %} for head title tags and helping us with SEO {% endcomment %}
+{% block title %}Product{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">Trending Products</h1>
+<div class="gallery">
+  {% for pruduct in products %}
+  <a href="">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-square">
+          <img src="{{product.image}}" alt="{{product.name}}" />
+        </figure>
+      </div>
+      <div class="card-header">
+        <p class="card-header-title">{{product.name}}</p>
+      </div>
+    </div>
+  </a>
+	{% empty %}
+  <article class="message">
+    <div class="message-header">
+      <p>No Products Available</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
