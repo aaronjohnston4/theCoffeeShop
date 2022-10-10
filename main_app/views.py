@@ -7,6 +7,8 @@ from django.views.generic.base import TemplateView
 from .models import Products
 # This will import the class we are extending 
 from django.views.generic.edit import CreateView
+# after our other imports 
+from django.views.generic import DetailView
 
 # Create your views here.
 
@@ -55,9 +57,9 @@ class Products:
         self.bio = bio
 
 
-class Show(TemplateView):
-    template_name = "show.html"
-
+class ProductDetail(DetailView):
+    model = Products
+    template_name = "product_detail.html"
 
 class Login(TemplateView):
     template_name = "login.html"
