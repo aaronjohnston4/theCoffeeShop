@@ -16,3 +16,8 @@ class Home(TemplateView):
         # Here we are returning a generic response
         # This is similar to response.send() in express
         return HttpResponse("The Coffee Shop Home")
+
+
+#...
+class About(TemplateView):
+    template_name = "about.html"
