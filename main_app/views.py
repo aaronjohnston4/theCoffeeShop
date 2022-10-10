@@ -3,7 +3,7 @@ from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 #...
 from django.views.generic.base import TemplateView
-
+from .models import Products
 
 # Create your views here.
 
@@ -50,7 +50,7 @@ class ProductList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["products"] = Products # this is where we add the key into our context object for the view to use
+        context["products"] = Products.objects.all() # this is where we add the key into our context object for the view to use
         return context
 
 
