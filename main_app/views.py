@@ -21,3 +21,27 @@ class Home(TemplateView):
 #...
 class About(TemplateView):
     template_name = "about.html"
+
+
+class Create(TemplateView):
+    template_name = "create.html"
+
+
+class Products(TemplateView):
+    template_name = "products.html"
+
+
+class Show(TemplateView):
+    template_name = "show.html"
+
+
+class Login(TemplateView):
+    template_name = "login.html"
+
+
+class Wishlist(TemplateView):
+    template_name = "wishlist.html"
+
+
+class Cart(TemplateView):
+    template_name = "cart.html"
