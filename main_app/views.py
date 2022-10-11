@@ -4,7 +4,7 @@ from django.views import View # <- View class to handle requests
 #...
 from django.urls import reverse
 from django.views.generic.base import TemplateView
-from .models import Products
+from .models import Products, Size
 # This will import the class we are extending 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # after our other imports 
@@ -109,5 +109,14 @@ class ProductList(TemplateView):
             context["stuff_at_top"] = f"Searching through Products list for {mySearchName}"
         else:
             context["products"] = Products.objects.filter()
-            context["stuff_at_top"] = "Trending Products"
+            context["stuff_at_top"] = "THE COFFEE SHOP"
         return context
+
+
+class SizeCreate(View):
+
+    def post(self, request, pk):
+        formTitle = request.POST.get("title")
+        theProducts = Products.objects.get(pk=pk)
+        Size.objects.create(title=formTitle, products = theProducts)
+        return redirect('park_detail', pk=pk)

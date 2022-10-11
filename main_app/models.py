@@ -14,3 +14,14 @@ class Products(models.Model):
 
     class Meta:
         ordering = ['name']
+
+
+
+class Size(models.Model):
+
+    title = models.CharField(max_length=150)
+    length = models.IntegerField(default=0)
+    artist = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="sizes")
+
+    def __str__(self):
+        return self.title
