@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View # <- View class to handle requests
 from django.http import HttpResponse # <- a class to handle sending a type of response
 #...
@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views.generic.base import TemplateView
 from .models import Products
 # This will import the class we are extending 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # after our other imports 
 from django.views.generic import DetailView
 
@@ -46,7 +46,7 @@ class ProductCreate(CreateView):
 
     def get_success_url(self):
         print(self.kwargs)
-        return reverse('artist_detail', kwargs={'pk': self.object.pk})
+        return reverse('product_detail', kwargs={'pk': self.object.pk})
 
 
 class Products:
@@ -75,17 +75,22 @@ class Cart(TemplateView):
 
 class ProductList(TemplateView):
     template_name = "products_list.html"
+#     In here, I want to check if there has been a query made
+# I know the queries will have a key of name
+# const context = {
+#     artists: //finding ArtistList,
+#     stuff_at_top: "This is a string"
+# }
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        name = self.request.GET.get("name")
-        if name != None:
-            context["products"] = Products.objects.filter(name__icontains=name)
-            # We add a header context that includes the search param
-            context["header"] = f"Searching for {name}"
+        mySearchName = self.request.GET.get("name")
+        # If a query exists we will filter by name 
+        if mySearchName != None:
+            # .filter is the sql WHERE statement and name__icontains is doing a search for any name that contains the query param
+            context["pruducts"] = Products.objects.filter(name__icontains=mySearchName)
+            context["stuff_at_top"] = f"Searching through Artists list for {mySearchName}"
         else:
-            context["products"] = Products.objects.all()
-            # default header for not searching 
-            context["header"] = f"Searching for {name}"
+            context["products"] = Products.objects.filter(user=self.request.user)
+            context["stuff_at_top"] = "Trending Artists"
         return context
-

@@ -1,34 +1,41 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block title %}
+{{stuff_at_top}}
+{% endblock %}
 
-<h1 class="title">Products</h1>
+{% block content %}
+
+<h1 class="title">{{stuff_at_top}}</h1>
 
 <form class="mb-5" method="get">
   <div class="field has-addons">
     <div class="control">
-      <!--  Our input will search by name of product  -->
-      <input class="input" type="text" name="name" placeholder="name" />
+      <!--  Our input will search by name of artist  -->
+      <input class="input" type="text" name="name" placeholder="search for artist" />
     </div>
     <div class="control">
       <input class="button is-success" type="submit" value="Search" />
     </div>
   </div>
-  <!--  This anchor tag will redirect back to product list without a query param -->
+  <!--  This anchor tag will redirect back to artist list without a query param -->
   <a class="button is-dark" href="{% url 'products_list' %}">Clear Search</a>
 </form>
 <div class="gallery">
   {% for products in products %}
-  <a href="">
     <div class="card">
-      <div class="card-image">
-        <figure class="image is-square">
-          <img src="{{products.img}}" alt="{{products.name}}" />
-        </figure>
+      <a href="{% url 'product_detail' products.pk %}" >
+        <div class="card-image">
+          <figure class="image is-square">
+            <img src="{{products.img}}" alt="{{products.name}}" />
+          </figure>
+        </div>
+        <div class="card-header">
+          <p class="card-header-title">{{products.name}}</p>
+        </div>
+      </a>
       </div>
-      <div class="card-header">
-        <p class="card-header-title">{{products.name}}</p>
-      </div>
-    </div>
-  </a>
+  {% empty %}
+    <h1>No products found matching your query</h1>
   {% endfor %}
 </div>
 
