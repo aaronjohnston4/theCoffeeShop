@@ -118,5 +118,5 @@ class SizeCreate(View):
     def post(self, request, pk):
         formTitle = request.POST.get("title")
         theProducts = Products.objects.get(pk=pk)
-        Size.objects.create(title=formTitle, products = theProducts)
-        return redirect('park_detail', pk=pk)
+        Size.objects.create(title=formTitle, products=theProducts)
+        return redirect('product_detail', pk=pk)

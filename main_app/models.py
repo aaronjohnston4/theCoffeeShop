@@ -1,3 +1,4 @@
+from itertools import product
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -19,9 +20,9 @@ class Products(models.Model):
 
 class Size(models.Model):
 
+    title = models.CharField(max_length=500)
     title = models.CharField(max_length=150)
-    length = models.IntegerField(default=0)
-    artist = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="sizes")
+    products = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="sizes")
 
     def __str__(self):
         return self.title

@@ -30,9 +30,40 @@
     <!-- inside container -->
     <div class="detail__sizes mb-5">
         <h3 class="title is-3">Sizes</h3>
+        <!-- Here you can see the action we provided
+     is to the song_create route with the artist pk -->
+    <form class="mb-5" action="{% url 'size_create' products.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+        <div class="control">
+            <input
+            class="input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            required
+            />
+        </div>
+        <div class="control">
+            <input
+            class="input"
+            type="text"
+            name="title"
+            placeholder="Title"
+            required
+            />
+        </div>
+        <div class="control">
+            <input class="button is-primary" type="submit" value="Add Size" />
+        </div>
+        </div>
+    </form>
+
+<!-- before the for loop for songs -->
 
         {% for size in products.sizes.all %}
-            <div class="song">
+            <div class="size
+            ">
                 <span>{{forloop.counter}}</span>
                 <span><b>{{size.title}}</b></span>
             </div>
