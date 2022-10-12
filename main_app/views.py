@@ -4,7 +4,7 @@ from django.views import View # <- View class to handle requests
 #...
 from django.urls import reverse
 from django.views.generic.base import TemplateView
-from .models import Products, Size
+from .models import Products, Size, Wishlist
 # This will import the class we are extending 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # after our other imports 
@@ -82,9 +82,13 @@ class Login(TemplateView):
     template_name = "login.html"
 
 
-class Wishlist(TemplateView):
+class Wishlists(TemplateView):
     template_name = "wishlist.html"
-
+    # Here we have added the playlists as context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["wishlists"] = Wishlist.objects.all()
+        return context
 
 class Cart(TemplateView):
     template_name = "cart.html"

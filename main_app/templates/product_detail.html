@@ -29,7 +29,11 @@
     </div>
     <!-- inside container -->
     <div class="detail__sizes mb-5">
-        <h3 class="title is-3">Sizes</h3>
+        <div class="detail__about">
+            <h4 class="title is-4">About</h4>
+            <p>{{products.bio}}</p>
+        </div>
+        <h4 class="title is-3">Reviews</h4>
         <!-- Here you can see the action we provided
      is to the song_create route with the artist pk -->
     <form class="mb-5" action="{% url 'size_create' products.pk %}" method="post">
@@ -40,21 +44,12 @@
             class="input"
             type="text"
             name="title"
-            placeholder="Title"
+            placeholder="Write a Review"
             required
             />
         </div>
         <div class="control">
-            <input
-            class="input"
-            type="text"
-            name="title"
-            placeholder="Title"
-            required
-            />
-        </div>
-        <div class="control">
-            <input class="button is-primary" type="submit" value="Add Size" />
+            <input class="button is-primary" type="submit" value="Add Review" />
         </div>
         </div>
     </form>
@@ -77,10 +72,7 @@
         {% endfor %}
     </div>
 <!--  above about section  -->
-    <div class="detail__about">
-        <h4 class="title is-4">About</h4>
-        <p>{{products.bio}}</p>
-    </div>
+    
 </div>
 
 

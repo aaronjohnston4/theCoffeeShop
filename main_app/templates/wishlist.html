@@ -1,3 +1,23 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Wishlist</h1>
+{% extends 'base.html' %} 
+{% block content %}
+<div class="home__wishlists">
+    {% for wishlist in wishlists %}
+
+        <div class="wishlist mb-5">
+            <h3 class="title is-3 has-text-success">{{wishlist.title}}</h3>
+            <hr />
+
+            {% for product in wishlist.products.all %}
+
+                <div class="product">
+                    <span>{{forloop.counter}}</span>
+                    <span><b>{{product.title}}</b></span>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="wishlist mb-5">"There are no products in this wishlist"</div>
+    {% endfor %}
+</div>
 {% endblock %}
