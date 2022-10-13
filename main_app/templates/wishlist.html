@@ -8,10 +8,20 @@
             <hr />
 
             {% for product in wishlist.products.all %}
-
+            {{product}}
                 <div class="product">
                     <span>{{forloop.counter}}</span>
-                    <span><b>{{product.title}}</b></span>
+                    <span><b>{{product.name}}</b></span>
+                    <span>
+                        <!--   Here we are creating an anchor
+                        tag that when clicked will hit our new
+                        route and send a query to remove the song     -->
+                        <a href="{% url 'wishlist_product_assoc' wishlist.pk product.pk %}?assoc=remove" class="button is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        </a>
+                    </span>
                 </div>
 
             {% endfor %}

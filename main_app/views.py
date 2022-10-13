@@ -61,6 +61,11 @@ class ProductDetail(DetailView):
     model = Products
     template_name = "product_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['wishlists'] = Wishlist.objects.all()
+        return context
+
 
 class ProductUpdate(UpdateView):
     model = Products
@@ -124,3 +129,21 @@ class SizeCreate(View):
         theProducts = Products.objects.get(pk=pk)
         Size.objects.create(title=formTitle, products=theProducts)
         return redirect('product_detail', pk=pk)
+
+
+class WishlistProductAssoc(View):
+
+    def get(self, request, pk, product_pk):
+        # get the query parameter from the 
+        assoc = request.GET.get("assoc")
+
+        if assoc == "remove":
+            # get the playlist by the pk, remove the song (row) with the song_pk
+            Wishlist.objects.get(pk=pk).products.remove(product_pk)
+        
+        if assoc == "add":
+
+            # get the playlist by the pk, add the song (row) with the song_pk
+            Wishlist.objects.get(pk=pk).products.add(product_pk)
+        
+        return redirect('home')
