@@ -64,6 +64,7 @@ class ProductDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['wishlists'] = Wishlist.objects.all()
+        print(context["wishlists"])
         return context
 
 

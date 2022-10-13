@@ -26,31 +26,13 @@
                 <i class="fas fa-trash-alt"></i>
             </span>
         </a>
-    </div>
-    <span>
-        <div class="dropdown">
-          <div class="dropdown-trigger">
-            <button
-              class="button"
-              aria-haspopup="true"
-              aria-controls="dropdown-menu"
-            >
+        </div>
               <span>Add to Wishlist</span>
-              <span class="icon is-small">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-            </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content">
               {% for wishlist in wishlists %}
-          <!-- each playlist becomes a drop
-          down item with the ids needed to add to the join table  -->
               <a
-                href="{% url 'wishlist_product_assoc' products.pk products.pk %}?assoc=add"
-                class="dropdown-item"
+                href="{% url 'wishlist_product_assoc' wishlist.pk products.pk %}?assoc=add"
               >
-                {{wishlist.title}}
+                {{wishlist}}
               </a>
               {% endfor %}
             </div>
