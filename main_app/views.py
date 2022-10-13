@@ -9,7 +9,8 @@ from .models import Products, Size, Wishlist
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # after our other imports 
 from django.views.generic import DetailView
-
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 # Here we will be creating a class called Home and extending it from the View class
@@ -148,3 +149,20 @@ class WishlistProductAssoc(View):
             Wishlist.objects.get(pk=pk).products.add(product_pk)
         
         return redirect('home')
+
+
+class Signup(View):
+    # show a form to fill out
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    # on form submit, validate the form and login the user.
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("artist_list")
+        else:
+            return redirect("signup")
