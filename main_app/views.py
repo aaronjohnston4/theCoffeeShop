@@ -163,6 +163,6 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("artist_list")
+            return redirect("products_list")
         else:
             return redirect("signup")
