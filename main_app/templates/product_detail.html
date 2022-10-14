@@ -15,6 +15,7 @@
     <h1 class="title">{{products.name}}</h1>
 </div>
 <div class="detail__container">
+    {% if user.is_superuser %}
     <div class="buttons">
         <a href="{% url 'product_update' products.pk %}" class="button is-info">
             <span class="icon">
@@ -27,6 +28,7 @@
             </span>
         </a>
         </div>
+        {% endif %}
               <span>Add to Wishlist</span>
               {% for wishlist in wishlists %}
               <a
@@ -77,7 +79,7 @@
         {% empty %}
             <article class="message">
                 <div class="message-header">
-                    <p>No Sizes Available</p>
+                    <p>No Reviews Available</p>
                 </div>
             </article>
 
