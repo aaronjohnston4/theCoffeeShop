@@ -28,10 +28,6 @@ Step 2. ERD
 Step 3. Final Shots
 
  <img width="400" alt="Home Page" src="https://i.imgur.com/vV2BN7P.png">
- <img width="400" alt="Index" src="blob:https://imgur.com/80acba71-aa34-4018-abe5-6da5b12ccadd">
- <img width="400" alt="Show Page" src="blob:https://imgur.com/1c06942e-19bf-4bdc-bd1b-574596085638">
- <img width="400" alt="Create Page" src="blob:https://imgur.com/3c427f8f-866b-4af3-9e38-cc08c0ca30d5">
- <img width="400" alt="Wish List Page" src="blob:https://imgur.com/2f736c30-fc80-4c70-9163-8e7a34f49c53">
 
 # Technologies Used:
 
