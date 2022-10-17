@@ -22,3 +22,26 @@ Step 2. ERD
 
 <img width="400" alt="Edit Page" src="https://i.imgur.com/tWBPfyC.png">
  
+Step 3. Final Shots
+
+ <img width="400" alt="Home Page" src="https://i.imgur.com/vV2BN7P.png">
+ <img width="400" alt="Index" src="blob:https://imgur.com/80acba71-aa34-4018-abe5-6da5b12ccadd">
+ <img width="400" alt="Show Page" src="blob:https://imgur.com/1c06942e-19bf-4bdc-bd1b-574596085638">
+ <img width="400" alt="Create Page" src="blob:https://imgur.com/3c427f8f-866b-4af3-9e38-cc08c0ca30d5">
+ <img width="400" alt="Wish List Page" src="blob:https://imgur.com/2f736c30-fc80-4c70-9163-8e7a34f49c53">
+
+# Technologies Used:
+
+I built a full stack application for "The Coffee Shop" by using Python, Django, CSS, HTML, Bulma, and Heroku.
+
+# Getting Started:
+
+For the website you land on the Home page where you can navigate to the login page in the navigation bar to create your user. As a user you can add coffee beans products to the wishlist. As the superuser/admin you are able to create, edit, update and delete coffee bean products.
+
+# Next Steps:
+
+My next steps will be building a shopping cart for the site. I will also make the site look more similar to the wireframes created by reworking the CSS and HTML.
+
+# Cites:
+
+bulma.io
